@@ -80,7 +80,8 @@ class FrameOne(tk.Frame):
 
         self.i = -1
 
-        self.label1 = tk.Label(self, pady=40, bg="#EA4C46", font='Helvetica 24  bold')
+        self.label1 = tk.Label(self, pady=40, bg="#EA4C46", font='Helvetica 24  bold',
+                               borderwidth=10, relief="raised")
         self.label1.pack()
         self.every5sec()
 
