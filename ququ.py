@@ -4,14 +4,10 @@ import threading
 import tkinter as tk
 
 
-# global vars
-ii = 0
-qq = queue.Queue()
-
-
 def putting_thread(q1, num_of_el):
+    ii = 0
     while True:
-        global ii
+        # global ii
         ii += 1
         # print('starting thread')
         # putting an e^2 every 5 seconds
@@ -24,8 +20,8 @@ def putting_thread(q1, num_of_el):
 
 
 def ququ1():
-    global qq
-    th = threading.Thread(target=putting_thread, args=(qq, 3,))
+    qq = queue.Queue()
+    th = threading.Thread(target=putting_thread, args=(qq, 10,))
     th.start()
     th.join()
     return qq
@@ -52,7 +48,6 @@ class MyApp(tk.Tk):
         self.rowconfigure(0, weight=1)
         self.columnconfigure(0, weight=1)
         self.resizable(False, False)
-
         self.app_data = {"q_elements": getting_thread(ququ1())}
 
         container = tk.Frame(self)
